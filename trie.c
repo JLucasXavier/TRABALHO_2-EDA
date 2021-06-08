@@ -4,25 +4,42 @@
 #include<string.h>
 #include "trie.h"
 
-#define TAM ?????
- 
+#define TAM 26 
 
-Trie *criaNo(char v)
-{
-   /* Cria nó da árvore */
+int indexAlfabeto(char letra){
+    return letra-'a';
+} 
+
+Trie *criaNo(char v){
+    Trie *no = (Trie*)malloc(sizeof(Trie));
+    no->letra=v;
+    no->termino=0;
+    for(int i=0; i<TAM; i++){
+        no->filhos[i]=NULL;
+        no->ocupacao=0;
+    }
+    return no;
 }
 
-Trie *criaTrie()
-{
+Trie *criaTrie(){
     Trie *t = criaNo(' ');
     t->termino = 1;
     return t;
 }
 
-
-void inserePalavra(Trie *t, char *palavra)
-{
- /* implementar a insecao de palavras */
+void inserePalavra(Trie *t, char *palavra){
+    for(int i=0; palavra[i]!='\0';i++){
+        int indexLetra=indexAlfabeto(tolower(palavra[i]));
+        if(t->filhos[indexLetra]==NULL){
+            Trie *no = criaNo(tolower(palavra[i]));
+            t->filhos[indexLetra] = no;
+            t->ocupacao=t->ocupacao+1;
+            t=no;
+        }else{
+            t=t->filhos[indexLetra];
+        }
+    }
+    t->termino=1;
 }
 
 
