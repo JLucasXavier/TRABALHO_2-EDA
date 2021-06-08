@@ -42,16 +42,32 @@ void inserePalavra(Trie *t, char *palavra){
     t->termino=1;
 }
 
-
-int buscarPalavra(Trie *t, char *palavra)
-{
- /* implementar a busca de palavras */
+int buscarPalavra(Trie *t, char *palavra){
+    for(int i=0;palavra[i]!='\0';i++){
+        int indexLetra=indexAlfabeto(tolower(palavra[i]));
+        if(t->filhos[indexLetra]==NULL){
+            return 0;
+        }else{
+            t=t->filhos[indexLetra];
+        }
+    }
+    if(t->termino==0){
+        return 0;
+    }else{
+        return 1;
+    }
 }
 
-
-Trie* buscarPrefixo(Trie *t, char *palavra)
-{
-  /* implementar busca por prefixo */
+Trie* buscarPrefixo(Trie *t, char *palavra){
+    for(int i=0;palavra[i]!='\0';i++){
+        int indexLetra=indexAlfabeto(tolower(palavra[i]));
+        if(t->filhos[indexLetra]==NULL){
+            return NULL;
+        }else{
+            t=t->filhos[indexLetra];
+        }
+    }
+    return t;
 }
 
 void removerPalavra(Trie *t, char *palavra)
