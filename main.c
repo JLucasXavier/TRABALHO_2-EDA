@@ -2,8 +2,8 @@
  Trabalho 2 - EDA INF 1010
 
 *** AUTORES ***
-** NOME 1 - MATRICULA 1 **
-** NOME 2 - MATRICULA 2 **
+** Alexandre Rodrigues Bomfim Junior - 1921241 **
+** José Lucas Teixeira Xavier - 1921254 **
 
 *******************************************************************************/
 #include <stdio.h>
