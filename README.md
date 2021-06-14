@@ -10,4 +10,4 @@ FUNÇÕES QUE DEVEM SER IMPLEMENTADAS:
 <br/>:two: void inserePalavra(Trie *t, char *palavra) – Insere palavra :heavy_check_mark:
 <br/>:three: int buscarPalavra(Trie *t, char *palavra) – Busca por palavra (completa) :heavy_check_mark:
 <br/>:four: Trie* buscarPrefixo(Trie *t, char *palavra) – Busca por prefixo (palavra completa ou parte inicial) :heavy_check_mark:
-<br/>:five: void removerPalavra(Trie *t, char *palavra) – Remove palavra :heavy_check_mark:
+<br/>:five: void removerPalavra(Trie *t, char *palavra) – Remove palavra :x: (função incompleta)
