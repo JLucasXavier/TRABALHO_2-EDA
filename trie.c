@@ -70,9 +70,57 @@ Trie* buscarPrefixo(Trie *t, char *palavra){
     return t;
 }
 
-void removerPalavra(Trie *t, char *palavra)
-{
- /* implementar remoca de palavras */
+void removerPalavra(Trie *t, char *palavra){
+    int ultimaLetra = strlen(palavra)-1;
+    int ocorrencia =-1;
+    Trie *tmp = t;
+    for(int i=0;palavra[i]!='\0';i++){
+        int indexLetra=indexAlfabeto(tolower(palavra[i]));
+        if(t->filhos[indexLetra]!=NULL){
+            t=t->filhos[indexLetra];
+            if(ultimaLetra==i && t->ocupacao>0 && t->termino==1){
+                t->termino=0;
+            }
+            else if(t->termino == 1 && ultimaLetra!=i){
+                ocorrencia = i;
+            }
+        }
+        
+    }
+    /*
+    t = tmp;
+    if(ocorrencia != -1){
+        int indexLetra=indexAlfabeto(tolower(palavra[0]));
+        Trie *recebeFilho = t->filhos[indexLetra];
+        for(int i=0;palavra[i]!='\0';i++){
+             indexLetra=indexAlfabeto(tolower(palavra[i]));
+             if(t->filhos[indexLetra]!=NULL){
+                t=recebeFilho->filhos[indexLetra];
+                if(palavra[i+1]!='\0'){
+                    recebeFilho = t->filhos[indexAlfabeto(tolower(palavra[i+1]))];
+                }
+                t->filhos[indexLetra] = NULL;
+                t->ocupacao -= 1;
+                t = recebeFilho;
+             }
+        }
+    }
+    else{
+        int indexLetra=indexAlfabeto(tolower(palavra[0]));
+        Trie *recebeFilho = t->filhos[indexLetra];
+        for(int i=0;palavra[i]!='\0';i++){
+             indexLetra=indexAlfabeto(tolower(palavra[i]));
+             if(t->filhos[indexLetra]!=NULL){
+                t=recebeFilho->filhos[indexLetra];
+                if(palavra[i+1]!='\0'){
+                    recebeFilho = t->filhos[indexAlfabeto(tolower(palavra[i+1]))];
+                }
+                t->filhos[indexLetra] = NULL;
+                t->ocupacao -= 1;
+             }
+        }
+    }
+    */
 }
 
 
